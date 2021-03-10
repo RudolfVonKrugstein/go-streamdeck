@@ -43,7 +43,8 @@ func New() (*StreamDeck, error) {
 	sd.dev = d
 	sd.buttons = make(map[int]Button)
 	sd.decorators = make(map[int]ButtonDecorator)
-	sd.dev.ButtonPress(sd.pressHandler)
+	sd.dev.OnButtonPress(sd.pressHandler)
+	sd.dev.OnError(sd.errorHandler)
 	return sd, nil
 }
 
@@ -95,13 +96,16 @@ func (sd *StreamDeck) GetButtonIndex(btnIndex int) Button {
 	return b
 }
 
-func (sd *StreamDeck) pressHandler(btnIndex int, d *Device, err error) {
-	if err != nil {
-		panic(err)
-	}
+func (sd *StreamDeck) pressHandler(btnIndex int, d *Device) {
 	b := sd.buttons[btnIndex]
 	if b != nil {
 		sd.buttons[btnIndex].Pressed()
+	}
+}
+
+func (sd *StreamDeck) errorHandler(err error, d *Device) {
+	if err != nil {
+		panic(err)
 	}
 }
 

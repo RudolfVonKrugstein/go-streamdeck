@@ -65,7 +65,9 @@ func RegisterDevicetype(
 type Device struct {
 	fd                   *hid.Device
 	deviceType           deviceType
-	buttonPressListeners []func(int, *Device, error)
+	buttonPressListeners []func(int, *Device)
+	buttonReleaseListeners []func(int, *Device)
+	buttonErrorListeners []func(error, *Device)
 }
 
 // Open a Streamdeck device, the most common entry point
@@ -188,31 +190,56 @@ func (d *Device) buttonPressListener() {
 		data := make([]byte, d.deviceType.numberOfButtons+d.deviceType.buttonReadOffset)
 		_, err := d.fd.Read(data)
 		if err != nil {
-			d.sendButtonPressEvent(-1, err)
+			d.sendButtonErrorEvent(err)
 			break
 		}
 		for i := uint(0); i < d.deviceType.numberOfButtons; i++ {
 			if data[d.deviceType.buttonReadOffset+i] == 1 {
 				if !buttonMask[i] {
-					d.sendButtonPressEvent(int(i), nil)
+					d.sendButtonPressEvent(int(i))
 				}
 				buttonMask[i] = true
 			} else {
+				if buttonMask[i] {
+					d.sendButtonReleaseEvent(int(i))
+				}
 				buttonMask[i] = false
 			}
 		}
 	}
 }
 
-func (d *Device) sendButtonPressEvent(btnIndex int, err error) {
-	for _, f := range d.buttonPressListeners {
-		f(btnIndex, d, err)
+func (d *Device) sendButtonErrorEvent(err error) {
+	for _, f := range d.buttonErrorListeners {
+		f(err, d)
 	}
 }
 
-// ButtonPress registers a callback to be called whenever a button is pressed
-func (d *Device) ButtonPress(f func(int, *Device, error)) {
+func (d *Device) sendButtonPressEvent(btnIndex int) {
+	for _, f := range d.buttonPressListeners {
+		f(btnIndex, d)
+	}
+}
+
+func (d *Device) sendButtonReleaseEvent(btnIndex int) {
+	for _, f := range d.buttonReleaseListeners {
+		f(btnIndex, d)
+	}
+}
+
+// OnButtonPress registers a callback to be called whenever a button is pressed
+func (d *Device) OnButtonPress(f func(int, *Device)) {
 	d.buttonPressListeners = append(d.buttonPressListeners, f)
+}
+
+// OnButtonRelease registers a callback to be called whenever a button is released
+func (d *Device) OnButtonRelease(f func(int, *Device)) {
+	d.buttonReleaseListeners = append(d.buttonPressListeners, f)
+}
+
+// OnError registers a callback to be called whenever an error occurred during reading
+func (d *Device) OnError(f func(error, *Device)) {
+	d.buttonErrorListeners = append(d.buttonErrorListeners, f)
 }
 
 // ResetComms will reset the comms protocol to the StreamDeck; useful if things have gotten de-synced, but it will also reboot the StreamDeck
