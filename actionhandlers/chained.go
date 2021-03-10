@@ -1,6 +1,6 @@
 package actionhandlers
 
-import streamdeck "github.com/magicmonkey/go-streamdeck"
+import "github.com/RudolfVonKrugstein/go-streamdeck"
 
 type ChainedAction struct {
 	actions []streamdeck.ButtonActionHandler
