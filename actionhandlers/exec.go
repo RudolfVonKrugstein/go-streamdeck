@@ -1,7 +1,7 @@
 package actionhandlers
 
 import (
-	streamdeck "github.com/magicmonkey/go-streamdeck"
+	streamdeck "github.com/RudolfVonKrugstein/go-streamdeck"
 	"os/exec"
 )
 

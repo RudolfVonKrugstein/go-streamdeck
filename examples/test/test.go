@@ -5,8 +5,8 @@ import (
 	"image/color"
 	"sync"
 
-	streamdeck "github.com/magicmonkey/go-streamdeck"
-	_ "github.com/magicmonkey/go-streamdeck/devices"
+	streamdeck "github.com/RudolfVonKrugstein/go-streamdeck"
+	_ "github.com/RudolfVonKrugstein/go-streamdeck/devices"
 )
 
 func main() {

@@ -7,9 +7,9 @@ import (
 
 	"golang.org/x/image/font/gofont/gomedium"
 
+	streamdeck "github.com/RudolfVonKrugstein/go-streamdeck"
 	"github.com/golang/freetype"
 	"github.com/golang/freetype/truetype"
-	streamdeck "github.com/magicmonkey/go-streamdeck"
 )
 
 // TextButton represents a button with text on it

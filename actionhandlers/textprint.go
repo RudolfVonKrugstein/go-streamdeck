@@ -2,7 +2,7 @@ package actionhandlers
 
 import (
 	"fmt"
-	streamdeck "github.com/magicmonkey/go-streamdeck"
+	streamdeck "github.com/RudolfVonKrugstein/go-streamdeck"
 )
 
 type TextPrintAction struct {
