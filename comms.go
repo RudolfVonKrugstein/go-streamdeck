@@ -234,7 +234,7 @@ func (d *Device) OnButtonPress(f func(int, *Device)) {
 
 // OnButtonRelease registers a callback to be called whenever a button is released
 func (d *Device) OnButtonRelease(f func(int, *Device)) {
-	d.buttonReleaseListeners = append(d.buttonPressListeners, f)
+	d.buttonReleaseListeners = append(d.buttonReleaseListeners, f)
 }
 
 // OnError registers a callback to be called whenever an error occurred during reading
