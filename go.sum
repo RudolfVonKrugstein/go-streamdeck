@@ -1,3 +1,9 @@
+github.com/RudolfVonKrugstein/hid v1.0.1-0.20210311110324-ddd9ed2af58f h1:PjAQEDfgGDp3Hfnlnm68B5TxqMVG3ih+soLQoSIQzDE=
+github.com/RudolfVonKrugstein/hid v1.0.1-0.20210311110324-ddd9ed2af58f/go.mod h1:Vr51f8rUOLYrfrWDFlV12GGQgM5AT8sVh+2fY4MPeu8=
+github.com/RudolfVonKrugstein/hid v1.0.1-0.20210311110718-697c80b76bc2 h1:qGbmSGJ5WyBzRV4QHk754CqQWSYAVkl/MJ0oURKqSgc=
+github.com/RudolfVonKrugstein/hid v1.0.1-0.20210311110718-697c80b76bc2/go.mod h1:Vr51f8rUOLYrfrWDFlV12GGQgM5AT8sVh+2fY4MPeu8=
+github.com/RudolfVonKrugstein/hid v1.0.1-0.20210311110841-d6d47b7b7907 h1:DXeG1taTFYaaBZBgS0/A/g/3sokRvP+HpFCLmfasTJM=
+github.com/RudolfVonKrugstein/hid v1.0.1-0.20210311110841-d6d47b7b7907/go.mod h1:Vr51f8rUOLYrfrWDFlV12GGQgM5AT8sVh+2fY4MPeu8=
 github.com/disintegration/gift v1.2.1 h1:Y005a1X4Z7Uc+0gLpSAsKhWi4qLtsdEcMIbbdvdZ6pc=
 github.com/disintegration/gift v1.2.1/go.mod h1:Jh2i7f7Q2BM7Ezno3PhfezbR1xpUg9dUg3/RlKGr4HI=
 github.com/disintegration/imaging v1.6.2 h1:w1LecBlG2Lnp8B3jk5zSuNqd7b4DXhcjwek1ei82L+c=

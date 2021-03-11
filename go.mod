@@ -2,6 +2,8 @@ module github.com/RudolfVonKrugstein/go-streamdeck
 
 go 1.13
 
+replace github.com/karalabe/hid v1.0.1-0.20190806082151-9c14560f9ee8 => github.com/RudolfVonKrugstein/hid v1.0.1-0.20210311110841-d6d47b7b7907
+
 require (
 	github.com/disintegration/gift v1.2.1
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
